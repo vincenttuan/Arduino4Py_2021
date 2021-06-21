@@ -3,6 +3,7 @@ import random
 import time
 
 COM_PORT = '/dev/cu.wchusbserial1460'  # 指定通訊埠名稱
+#COM_PORT = '/dev/cu.HC-05-SerialPort' # 指定藍芽通訊埠名稱
 BAUD_RATES = 9600  # 設定傳輸速率(鮑率)
 ser = None
 
