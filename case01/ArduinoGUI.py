@@ -61,6 +61,9 @@ if __name__ == '__main__':
     root.geometry("600x400")
     root.title("Arduino GUI")
 
+    myfont1 = font.Font(family='Helvetica', size=36, weight='bold')
+    myfont2 = font.Font(family='Helvetica', size=24)
+
     respText = tkinter.StringVar()
     respText.set("0,0.0,0.0")
 
@@ -73,16 +76,16 @@ if __name__ == '__main__':
     humiValue = tkinter.StringVar()
     humiValue.set("00.00")
 
-    sendButton0  = tkinter.Button(text='0', command=lambda: sendData('0'))
-    sendButton1  = tkinter.Button(text='1', command=lambda: sendData('1'))
-    sendButton2  = tkinter.Button(text='2', command=lambda: sendData('2'))
-    sendButton3  = tkinter.Button(text='3', command=lambda: sendData('3'))
-    sendButton4  = tkinter.Button(text='4', command=lambda: sendData('4'))
-    sendButton8  = tkinter.Button(text='8', command=lambda: sendData('8'))
+    sendButton0  = tkinter.Button(text='0', command=lambda: sendData('0'), font=myfont2)
+    sendButton1  = tkinter.Button(text='1', command=lambda: sendData('1'), font=myfont2)
+    sendButton2  = tkinter.Button(text='2', command=lambda: sendData('2'), font=myfont2)
+    sendButton3  = tkinter.Button(text='3', command=lambda: sendData('3'), font=myfont2)
+    sendButton4  = tkinter.Button(text='4', command=lambda: sendData('4'), font=myfont2)
+    sendButton8  = tkinter.Button(text='8', command=lambda: sendData('8'), font=myfont2)
     receiveLabel = tkinter.Label(root, textvariable=respText)
-    cdsLabel = tkinter.Label(root, textvariable=cdsValue)
-    tempLabel = tkinter.Label(root, textvariable=tempValue)
-    humiLabel = tkinter.Label(root, textvariable=humiValue)
+    cdsLabel = tkinter.Label(root, textvariable=cdsValue, font=myfont1, fg='#ff0000')
+    tempLabel = tkinter.Label(root, textvariable=tempValue, font=myfont1, fg='#005100')
+    humiLabel = tkinter.Label(root, textvariable=humiValue, font=myfont2, fg='#00f')
 
     root.rowconfigure((0,1), weight=1) # 列 0, 列 1 同步放大縮小
     root.columnconfigure((0,1,2,3,4,5), weight=1) # 欄 0, 欄 1, 欄 2 ...同步放大縮小
