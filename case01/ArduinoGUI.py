@@ -14,8 +14,10 @@ BAUD_RATES = 9600  # 設定傳輸速率(鮑率)
 play = True
 
 def receiveData():
+
     while play:
         try:
+            global ser
             data_row = ser.readline()  # 讀取一行(含換行符號\r\n)原始資料
             data = data_row.decode()  # 預設是用 UTF-8 解碼
             data = data.strip("\r").strip("\n")  # 除去換行符號
@@ -25,7 +27,14 @@ def receiveData():
         except Exception as e:
             print("Serial closed ...", e)
             respText.set("Serial closed")
-            break
+
+            # re-try
+            try:
+                ser = serial.Serial(COM_PORT, BAUD_RATES)
+            except Exception as e:
+                print("Serial exception: ", e)
+
+            #break
 
 if __name__ == '__main__':
 
