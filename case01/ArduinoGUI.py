@@ -9,7 +9,7 @@ from tkinter import font
 
 root = tkinter.Tk()
 root.geometry("600x400")
-root.title = "Arduino GUI"
+root.title("Arduino GUI")
 
 respText = tkinter.StringVar()
 respText.set("0,0.0,0.0")
