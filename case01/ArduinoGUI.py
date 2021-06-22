@@ -24,6 +24,7 @@ def receiveData():
 
         except Exception as e:
             print("Serial closed ...", e)
+            respText.set("Serial closed")
             break
 
 if __name__ == '__main__':
