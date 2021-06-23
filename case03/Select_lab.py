@@ -24,6 +24,6 @@ print("max:", maxValue)
 
 for k, v in map.items():
     if(v == maxValue):
-        print("n:", k)
+        print("%d(%d)" % (k, maxValue))
 
 cursor.close()
