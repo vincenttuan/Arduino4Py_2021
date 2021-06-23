@@ -20,10 +20,13 @@ for r in rows:
 
 print(map)
 maxValue = max(map.values())
-print("max:", maxValue)
+minValue = min(map.values())
+print("max:", maxValue, "min:", minValue)
 
 for k, v in map.items():
-    if(v == maxValue):
+    if (v == maxValue):
         print("%d(%d)" % (k, maxValue))
+    if (v == minValue):
+        print("%d(%d)" % (k, minValue))
 
 cursor.close()
