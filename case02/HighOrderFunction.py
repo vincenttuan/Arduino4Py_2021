@@ -12,7 +12,7 @@ def operator(func, x):
 
 def multi(func1, func2, x):
     if(x > 0):
-        return func1(x) * func2(x)
+        return func1(x) * func2(x) * operator(add, x)
     else:
         return x
 
