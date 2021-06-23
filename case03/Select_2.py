@@ -24,4 +24,5 @@ for r in rows:
     print('{}\t{}\t{}\t{}\t{}\t{}\t{}'
           .format(r[0],r[1],r[2],r[3],r[4],r[5],r[6]))
 
+print(len(rows))
 cursor.close()
