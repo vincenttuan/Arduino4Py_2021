@@ -7,9 +7,10 @@ def mssage(text):
         print("print_message 方法執行")
         print(text)
 
-    return print_message()
+    return print_message
 
 
 if __name__ == '__main__':
     m1 = mssage("Hello")
     print(m1)
+    m1()
