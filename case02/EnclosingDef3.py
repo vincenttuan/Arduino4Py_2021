@@ -5,8 +5,10 @@ def multi(n):
     if n == 0:
         return None
 
-    def multi(x):
-        return n * x
+    # def multi(x):
+    #     return n * x
+
+    multi = lambda x: n * x
 
     return multi  # 得到第8行的方法參考
 
