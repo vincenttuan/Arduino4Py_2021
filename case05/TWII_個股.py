@@ -22,5 +22,14 @@ df = df.rename(columns={'殖利率(%)':'殖利率'})
 df = df.rename(columns={'財報年/季':'財報年季'})
 print(df)
 
+plt.plot(df['日期'], df['本益比'])  # 繪製折線圖
+plt.title('%s %s PE' % (date, symbol))
+plt.show()
+
 plt.plot(df['日期'], df['殖利率'])  # 繪製折線圖
+plt.title('%s %s Rate' % (date, symbol))
+plt.show()
+
+plt.plot(df['日期'], df['股價淨值比'])  # 繪製折線圖
+plt.title('%s %s PB' % (date, symbol))
 plt.show()
