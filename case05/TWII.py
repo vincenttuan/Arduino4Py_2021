@@ -1,4 +1,5 @@
 import requests
+import sqlite3
 
 path = 'https://www.twse.com.tw/exchangeReport/BWIBBU_d?response=csv&date=20210623&selectType=ALL'
 csv = requests.get(path).text
@@ -20,7 +21,9 @@ for row in rows:
         list[3] = int(list[3])    # 股利年度
         list[4] = float(list[4])  # 本益比
         list[5] = float(list[5])  # 股價淨值比
+        list[7] = '2021-06-23'
         stocks.append(tuple(list))
 
 print(stocks)
 
+# 匯入資料庫
