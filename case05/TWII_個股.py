@@ -18,6 +18,7 @@ data = list(filter(lambda l: len(l.split(',')) == 7, data )) # 過濾
 data = "\n".join(data)  # 透過 \n 合併
 #print(data)
 df = pd.read_csv(StringIO(data))
+df = df.drop(index=[21]) # 刪除指定列
 df = df[df.columns[df.isnull().all() == False]] # 篩除不必要的欄位
 print(df.dtypes)
 #df = df.set_index('日期')
@@ -25,5 +26,5 @@ df = df.rename(columns={'殖利率(%)':'殖利率'})
 df = df.rename(columns={'財報年/季':'財報年季'})
 print(df)
 
-plt.plot(df['日期'], df['股價淨值比'])  # 繪製折線圖
+plt.plot(df['日期'], df['殖利率'])  # 繪製折線圖
 plt.show()
