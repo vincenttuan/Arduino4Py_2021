@@ -4,6 +4,8 @@ from io import StringIO
 import matplotlib.pyplot as plt
 
 symbol = "2330"
+
+
 date = "20210531"
 path = "https://www.twse.com.tw/exchangeReport/BWIBBU?response=csv&date=%s&stockNo=%s" % (date, symbol)
 csv = requests.get(path).text
