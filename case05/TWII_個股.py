@@ -17,8 +17,9 @@ df = pd.read_csv(StringIO(data))
 df = df[df.columns[df.isnull().all() == False]] # 篩除不必要的欄位
 print(df.dtypes)
 #df = df.set_index('日期')
+df = df.rename(columns={'殖利率(%)':'殖利率'})
+df = df.rename(columns={'財報年/季':'財報年季'})
 print(df)
 
-#plt.plot(df['日期'], df['股價淨值比'])  # 繪製折線圖
-plt.plot(df['日期'], df['本益比'])  # 繪製折線圖
+plt.plot(df['日期'], df['殖利率(%)'])  # 繪製折線圖
 plt.show()
