@@ -57,15 +57,19 @@ def getOpenWeatherData():
     if(status_code == 200):
         owmainValue.set(main)
 
+        # 取得 icon 圖片 bytes 資料
         raw_data = ow.openweatherIcon(icon)
+        # 轉成 image 格式
         im = Image.open(BytesIO(raw_data))
+        # 轉成 Tk 的 photo 格式
         photo = ImageTk.PhotoImage(im)
+        # 配置到目標區(owiconLabel)
         owiconLabel.config(image=photo)
         owiconLabel.image=photo
 
-        owtempValue.set(temp)
-        owfeelsLikeValue.set(feels_like)
-        owhumidityValue.set(humidity)
+        owtempValue.set("%.1f C" % (float(temp)-273.15))
+        owfeelsLikeValue.set("%.1f C" % (float(feels_like)-273.15))
+        owhumidityValue.set("%.1f %%" % float(humidity))
     else:
         owmainValue.set('錯誤碼：' + str(status_code))
 
