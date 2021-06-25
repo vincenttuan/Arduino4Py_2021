@@ -84,7 +84,7 @@ if __name__ == '__main__':
 
     root = tkinter.Tk()
     root.geometry("800x400")
-    root.title("Arduino GUI")
+    root.title("Arduino 智慧家庭")
 
     myfont1 = font.Font(family='Helvetica', size=36, weight='bold')
     myfont2 = font.Font(family='Helvetica', size=24)
