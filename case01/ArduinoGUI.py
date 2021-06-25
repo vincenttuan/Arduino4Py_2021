@@ -25,9 +25,9 @@ def receiveData():
             respText.set(data)
             try :
                 values = data.split(",")
-                cdsValue.set(values[0])
-                tempValue.set(values[1])
-                humiValue.set(values[2])
+                cdsValue.set("%d lu" % (float(values[0])))
+                tempValue.set("%.1f C" % (float(values[1])))
+                humiValue.set("%.1f %%" % (float(values[2])))
             except:
                 pass
 
@@ -68,13 +68,13 @@ if __name__ == '__main__':
     respText.set("0,0.0,0.0")
 
     cdsValue = tkinter.StringVar()
-    cdsValue.set("0")
+    cdsValue.set("0 lu")
 
     tempValue = tkinter.StringVar()
-    tempValue.set("00.00")
+    tempValue.set("00.00 C")
 
     humiValue = tkinter.StringVar()
-    humiValue.set("00.00")
+    humiValue.set("00.00%")
 
     sendButton0  = tkinter.Button(text='0', command=lambda: sendData('0'), font=myfont2)
     sendButton1  = tkinter.Button(text='1', command=lambda: sendData('1'), font=myfont2)
@@ -85,7 +85,7 @@ if __name__ == '__main__':
     receiveLabel = tkinter.Label(root, textvariable=respText)
     cdsLabel = tkinter.Label(root, textvariable=cdsValue, font=myfont1, fg='#ff0000')
     tempLabel = tkinter.Label(root, textvariable=tempValue, font=myfont1, fg='#005100')
-    humiLabel = tkinter.Label(root, textvariable=humiValue, font=myfont2, fg='#00f')
+    humiLabel = tkinter.Label(root, textvariable=humiValue, font=myfont1, fg='#00f')
 
     root.rowconfigure((0,1), weight=1) # 列 0, 列 1 同步放大縮小
     root.columnconfigure((0,1,2,3,4,5), weight=1) # 欄 0, 欄 1, 欄 2 ...同步放大縮小
