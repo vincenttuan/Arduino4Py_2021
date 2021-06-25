@@ -101,7 +101,7 @@ if __name__ == '__main__':
     sendButton4  = tkinter.Button(text='4', command=lambda: sendData('4'), font=myfont2)
     sendButton8  = tkinter.Button(text='8', command=lambda: sendData('8'), font=myfont2)
     # 爬蟲 Openweather -----------------------------------------------------------------
-    owmainButton = tkinter.Button(text='', command=lambda: getOpenWeatherData(), font=myfont2)
+    owmainButton = tkinter.Button(textvariable=owmainValue, command=lambda: getOpenWeatherData(), font=myfont2)
     owiconLabel = tkinter.Label(root, textvariable=owiconValue, font=myfont2, fg='#ff0000')
     owtempLabel = tkinter.Label(root, textvariable=owtempValue, font=myfont2, fg='#ff0000')
     owfeelsLikeLabel = tkinter.Label(root, textvariable=owfeelsLikeValue, font=myfont2, fg='#ff0000')
