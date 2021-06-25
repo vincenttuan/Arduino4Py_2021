@@ -7,6 +7,7 @@
 import tkinter
 import serial
 import threading
+import case01.OpenWeather as ow
 from tkinter import font
 
 COM_PORT = '/dev/cu.wchusbserial1460'  # 指定通訊埠名稱
@@ -50,7 +51,12 @@ def sendData(n):
     print("send: ", data_row, data)
 
 def getOpenWeatherData():
-    pass
+    status_code, main, icon, temp, feels_like, humidity = ow.openweather()
+    owmainValue.set(main)
+    owiconValue.set(icon)
+    owtempValue.set(temp)
+    owfeelsLikeValue.set(feels_like)
+    owhumidityValue.set(humidity)
 
 if __name__ == '__main__':
 
