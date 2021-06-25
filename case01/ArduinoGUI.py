@@ -15,6 +15,7 @@ from PIL import Image, ImageTk
 COM_PORT = '/dev/cu.wchusbserial1460'  # 指定通訊埠名稱
 BAUD_RATES = 9600  # 設定傳輸速率(鮑率)
 play = True
+data = ""
 
 def receiveData():
 
@@ -22,6 +23,7 @@ def receiveData():
         try:
             global ser
             data_row = ser.readline()  # 讀取一行(含換行符號\r\n)原始資料
+            global data
             data = data_row.decode()  # 預設是用 UTF-8 解碼
             data = data.strip("\r").strip("\n")  # 除去換行符號
             print(data)
@@ -31,6 +33,12 @@ def receiveData():
                 cdsValue.set("%d lu" % (float(values[0])))
                 tempValue.set("%.1f C" % (float(values[1])))
                 humiValue.set("%.1f %%" % (float(values[2])))
+                if(int(values[3]) == 16):
+                    sendButton0.config(image=buzeer_open_photo)
+                    sendButton0.image = buzeer_open_photo
+                elif (int(values[3]) == 32):
+                    sendButton0.config(image=buzeer_close_photo)
+                    sendButton0.image = buzeer_close_photo
             except:
                 pass
 
@@ -51,6 +59,10 @@ def sendData(n):
     data = data_row.encode()
     ser.write(data)
     print("send: ", data_row, data)
+
+def playBuzeer():
+    sendData('16')
+
 
 def getOpenWeatherData():
     status_code, main, icon, temp, feels_like, humidity = ow.openweather()
@@ -123,7 +135,7 @@ if __name__ == '__main__':
     respText = tkinter.StringVar()
     respText.set("0,0.0,0.0")
 
-    sendButton0  = tkinter.Button(text='16', image=buzeer_close_photo, command=lambda: sendData('16'), font=myfont2)
+    sendButton0  = tkinter.Button(text='16', image=buzeer_close_photo, command=lambda: playBuzeer(), font=myfont2)
     sendButton1  = tkinter.Button(text='1', image=red_photo, command=lambda: sendData('1'), font=myfont2)
     sendButton2  = tkinter.Button(text='2', image=green_photo, command=lambda: sendData('2'), font=myfont2)
     sendButton3  = tkinter.Button(text='3', image=yellow_photo, command=lambda: sendData('3'), font=myfont2)
