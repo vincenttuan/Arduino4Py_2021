@@ -60,10 +60,6 @@ def sendData(n):
     ser.write(data)
     print("send: ", data_row, data)
 
-def playBuzeer():
-    sendData('16')
-
-
 def getOpenWeatherData():
     status_code, main, icon, temp, feels_like, humidity = ow.openweather()
     if(status_code == 200):
@@ -135,7 +131,7 @@ if __name__ == '__main__':
     respText = tkinter.StringVar()
     respText.set("0,0.0,0.0")
 
-    sendButton0  = tkinter.Button(text='16', image=buzeer_close_photo, command=lambda: playBuzeer(), font=myfont2)
+    sendButton0  = tkinter.Button(text='16', image=buzeer_close_photo, command=lambda: sendData('16'), font=myfont2)
     sendButton1  = tkinter.Button(text='1', image=red_photo, command=lambda: sendData('1'), font=myfont2)
     sendButton2  = tkinter.Button(text='2', image=green_photo, command=lambda: sendData('2'), font=myfont2)
     sendButton3  = tkinter.Button(text='3', image=yellow_photo, command=lambda: sendData('3'), font=myfont2)
