@@ -66,7 +66,7 @@ if __name__ == '__main__':
         print("Serial exception: ", e)
 
     root = tkinter.Tk()
-    root.geometry("600x400")
+    root.geometry("800x400")
     root.title("Arduino GUI")
 
     myfont1 = font.Font(family='Helvetica', size=36, weight='bold')
@@ -109,9 +109,9 @@ if __name__ == '__main__':
     # 爬蟲 Openweather -----------------------------------------------------------------
     owmainButton = tkinter.Button(textvariable=owmainValue, command=lambda: getOpenWeatherData(), font=myfont2)
     owiconLabel = tkinter.Label(root, textvariable=owiconValue, font=myfont2, fg='#ff0000')
-    owtempLabel = tkinter.Label(root, textvariable=owtempValue, font=myfont2, fg='#ff0000')
-    owfeelsLikeLabel = tkinter.Label(root, textvariable=owfeelsLikeValue, font=myfont2, fg='#ff0000')
-    owhumidityLabel = tkinter.Label(root, textvariable=owhumidityValue, font=myfont2, fg='#ff0000')
+    owtempLabel = tkinter.Label(root, textvariable=owtempValue, font=myfont2, fg='#005100')
+    owfeelsLikeLabel = tkinter.Label(root, textvariable=owfeelsLikeValue, font=myfont2, fg='#005100')
+    owhumidityLabel = tkinter.Label(root, textvariable=owhumidityValue, font=myfont2, fg='#0000ff')
     # ----------------------------------------------------------------------------------
     cdsLabel = tkinter.Label(root, textvariable=cdsValue, font=myfont1, fg='#ff0000')
     tempLabel = tkinter.Label(root, textvariable=tempValue, font=myfont1, fg='#005100')
