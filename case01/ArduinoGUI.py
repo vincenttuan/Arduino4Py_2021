@@ -9,6 +9,8 @@ import serial
 import threading
 import case01.OpenWeather as ow
 from tkinter import font
+from io import BytesIO
+from PIL import Image, ImageTk
 
 COM_PORT = '/dev/cu.wchusbserial1460'  # 指定通訊埠名稱
 BAUD_RATES = 9600  # 設定傳輸速率(鮑率)
@@ -54,7 +56,13 @@ def getOpenWeatherData():
     status_code, main, icon, temp, feels_like, humidity = ow.openweather()
     if(status_code == 200):
         owmainValue.set(main)
-        owiconValue.set(icon)
+
+        raw_data = ow.openweatherIcon(icon)
+        im = Image.open(BytesIO(raw_data))
+        photo = ImageTk.PhotoImage(im)
+        owiconLabel.config(image=photo)
+        owiconLabel.image=photo
+
         owtempValue.set(temp)
         owfeelsLikeValue.set(feels_like)
         owhumidityValue.set(humidity)
@@ -78,9 +86,6 @@ if __name__ == '__main__':
     # 爬蟲 Openweather -----------------------------------------------------------------
     owmainValue = tkinter.StringVar()
     owmainValue.set("")
-
-    owiconValue = tkinter.StringVar()
-    owiconValue.set("")
 
     owtempValue = tkinter.StringVar()
     owtempValue.set("")
@@ -111,7 +116,7 @@ if __name__ == '__main__':
     sendButton8  = tkinter.Button(text='8', command=lambda: sendData('8'), font=myfont2)
     # 爬蟲 Openweather -----------------------------------------------------------------
     owmainButton = tkinter.Button(textvariable=owmainValue, command=lambda: getOpenWeatherData(), font=myfont2)
-    owiconLabel = tkinter.Label(root, textvariable=owiconValue, font=myfont2, fg='#ff0000')
+    owiconLabel = tkinter.Label(root, image=None)
     owtempLabel = tkinter.Label(root, textvariable=owtempValue, font=myfont2, fg='#005100')
     owfeelsLikeLabel = tkinter.Label(root, textvariable=owfeelsLikeValue, font=myfont2, fg='#005100')
     owhumidityLabel = tkinter.Label(root, textvariable=owhumidityValue, font=myfont2, fg='#0000ff')
@@ -131,8 +136,8 @@ if __name__ == '__main__':
     sendButton4.grid(row=0,   column=4, columnspan=1, sticky='EWNS')
     sendButton8.grid(row=0,   column=5, columnspan=1, sticky='EWNS')
     # 爬蟲 Openweather -----------------------------------------------------------------
-    owmainButton.grid(row=1, column=0, columnspan=2, sticky='EWNS')
-    owiconLabel.grid(row=1, column=2, columnspan=1, sticky='EWNS')
+    owiconLabel.grid(row=1, column=0, columnspan=1, sticky='EWNS')
+    owmainButton.grid(row=1, column=1, columnspan=2, sticky='EWNS')
     owtempLabel.grid(row=1, column=3, columnspan=1, sticky='EWNS')
     owfeelsLikeLabel.grid(row=1, column=4, columnspan=1, sticky='EWNS')
     owhumidityLabel.grid(row=1, column=5, columnspan=1, sticky='EWNS')
