@@ -52,11 +52,14 @@ def sendData(n):
 
 def getOpenWeatherData():
     status_code, main, icon, temp, feels_like, humidity = ow.openweather()
-    owmainValue.set(main)
-    owiconValue.set(icon)
-    owtempValue.set(temp)
-    owfeelsLikeValue.set(feels_like)
-    owhumidityValue.set(humidity)
+    if(status_code == 200):
+        owmainValue.set(main)
+        owiconValue.set(icon)
+        owtempValue.set(temp)
+        owfeelsLikeValue.set(feels_like)
+        owhumidityValue.set(humidity)
+    else:
+        owmainValue.set('錯誤碼：' + str(status_code))
 
 if __name__ == '__main__':
 
