@@ -89,7 +89,7 @@ if __name__ == '__main__':
     myfont1 = font.Font(family='Helvetica', size=36, weight='bold')
     myfont2 = font.Font(family='Helvetica', size=24)
 
-    reload_photo = ImageTk.PhotoImage(Image.open('reload.png'))
+    clear_photo = ImageTk.PhotoImage(Image.open('clear.png'))
     red_photo = ImageTk.PhotoImage(Image.open('red.png'))
     green_photo = ImageTk.PhotoImage(Image.open('green.png'))
     yellow_photo = ImageTk.PhotoImage(Image.open('yellow.png'))
@@ -121,7 +121,7 @@ if __name__ == '__main__':
     respText = tkinter.StringVar()
     respText.set("0,0.0,0.0")
 
-    sendButton0  = tkinter.Button(text='0', image=reload_photo, command=lambda: sendData('0'), font=myfont2)
+    sendButton0  = tkinter.Button(text='0', image=clear_photo, command=lambda: sendData('0'), font=myfont2)
     sendButton1  = tkinter.Button(text='1', image=red_photo, command=lambda: sendData('1'), font=myfont2)
     sendButton2  = tkinter.Button(text='2', image=green_photo, command=lambda: sendData('2'), font=myfont2)
     sendButton3  = tkinter.Button(text='3', image=yellow_photo, command=lambda: sendData('3'), font=myfont2)
