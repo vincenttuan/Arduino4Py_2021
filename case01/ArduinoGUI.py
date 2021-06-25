@@ -70,6 +70,8 @@ def getOpenWeatherData():
         owtempValue.set("%.1f C" % (float(temp)-273.15))
         owfeelsLikeValue.set("%.1f C" % (float(feels_like)-273.15))
         owhumidityValue.set("%.1f %%" % float(humidity))
+
+        sendData("A%.2f,%.2f" % ((float(temp)-273.15), float(humidity)))
     else:
         owmainValue.set('錯誤碼：' + str(status_code))
 
