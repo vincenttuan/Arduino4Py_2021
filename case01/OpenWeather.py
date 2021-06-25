@@ -11,15 +11,17 @@ def openweather():
     resp = requests.get(url)
     if(resp.status_code == 200):
         jo = json.loads(resp.text)
-        print(jo)
+        #print(jo)
         main = jo['weather'][0]['main']
         icon = jo['weather'][0]['icon']
         temp = jo['main']['temp']
         feels_like = jo['main']['feels_like']
         humidity = jo['main']['humidity']
-        print(main, icon, temp, feels_like, humidity)
+        #print(main, icon, temp, feels_like, humidity)
+        return main, icon, temp, feels_like, humidity
     else:
         print('Error', resp.status_code)
 
 if __name__ == '__main__':
-    openweather()
+    main, icon, temp, feels_like, humidity = openweather()
+    print(main, icon, temp, feels_like, humidity)
