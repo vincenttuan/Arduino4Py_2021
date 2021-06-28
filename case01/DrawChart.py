@@ -4,7 +4,9 @@ import pandas as pd
 import matplotlib.pyplot as plt
 
 conn = sqlite3.connect('iot.db')
-df = pd.read_sql_query("SELECT id, cds, temp, humi, ts FROM Env order by id", con=conn)
+df = pd.read_sql_query("SELECT id, cds, temp, humi, ts FROM Env "
+                       "order by ts desc limit 50", con=conn)
+df = df[::-1] # reverse
 print(df)
 
 # 繪圖
