@@ -8,6 +8,7 @@ import tkinter
 import serial
 import threading
 import case01.OpenWeather as ow
+import sqlite3
 from tkinter import font
 from io import BytesIO
 from PIL import Image, ImageTk
@@ -16,6 +17,19 @@ COM_PORT = '/dev/cu.wchusbserial1460'  # 指定通訊埠名稱
 BAUD_RATES = 9600  # 設定傳輸速率(鮑率)
 play = True
 data = ""
+conn = sqlite3.connect('iot.db')
+
+def createTable():
+    sql = 'create table if not exists Env(' \
+          'id integer not null primary key autoincrement,' \
+          'cds real,' \
+          'temp real,' \
+          'humt real,' \
+          'ts timestamp default current_timestamp ' \
+          ')'
+    cursor = conn.cursor()
+    cursor.execute(sql)
+    conn.commit()
 
 def receiveData():
 
@@ -59,6 +73,7 @@ def receiveData():
                 print("Serial exception: ", e)
 
             #break
+    conn.close()
 
 def sendData(n):
     data_row = n + "#" # "#" 代表結束符號
@@ -97,6 +112,8 @@ def getOpenWeatherData():
         owmainValue.set('錯誤碼：' + str(status_code))
 
 if __name__ == '__main__':
+
+    #createTable()
 
     try:
         ser = serial.Serial(COM_PORT, BAUD_RATES)
