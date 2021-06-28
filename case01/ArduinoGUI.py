@@ -13,6 +13,7 @@ import time
 from tkinter import font
 from io import BytesIO
 from PIL import Image, ImageTk
+import case01.DrawChart_GUI as gui
 
 COM_PORT = '/dev/cu.wchusbserial1460'  # 指定通訊埠名稱
 BAUD_RATES = 9600  # 設定傳輸速率(鮑率)
@@ -227,5 +228,6 @@ if __name__ == '__main__':
     t3.start()
 
     root.mainloop()
+    gui.show()
 
 
