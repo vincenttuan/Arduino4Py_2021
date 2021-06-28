@@ -16,6 +16,7 @@ plt.grid(True)
 # 圖例
 plt.xlabel('time')
 plt.ylabel('value')
+plt.xticks(rotation=90)
 plt.legend()
 plt.show()
 
