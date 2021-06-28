@@ -10,16 +10,12 @@ df = df[::-1] # reverse
 print(df)
 
 # 繪圖
-#ma = df['SALARY'].rolling(window=2).mean()  # window=2 (二點算出一個平均值)移動平均值
-#print(ma)
-#plt.plot(df.ts.values, df.temp.values, 'r.')  # 點紅點
 plt.plot(df['ts'], df['temp'], label="temp")  # 繪製折線圖
 plt.plot(df['ts'], df['humi'], label="humi")  # 繪製折線圖
 plt.grid(True)
-#plt.plot(df['NAME'], ma)  # 繪製移動平均線折線圖
 # 圖例
-# plt.xlabel('Name')
-# plt.ylabel('Salary')
+plt.xlabel('time')
+plt.ylabel('value')
 plt.legend()
 plt.show()
 
