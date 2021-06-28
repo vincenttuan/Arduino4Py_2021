@@ -39,7 +39,7 @@ def receiveData():
                 elif (int(values[3]) == 32):
                     sendButton0.config(image=buzeer_close_photo)
                     sendButton0.image = buzeer_close_photo
-                if (int(values[4]) == 15):
+                if (int(values[4]) == 20):
                     sendButton4.config(image=door_close_photo)
                     sendButton4.image = door_close_photo
                 elif (int(values[4]) == 105):
@@ -68,7 +68,7 @@ def sendData(n):
 
 def openTheDoor():
     door = int(data.split(",")[4])
-    if door == 15 :
+    if door == 20 :
         sendData('8')
     elif door == 105:
         sendData('4')
