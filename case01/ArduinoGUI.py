@@ -24,7 +24,7 @@ def createTable():
           'id integer not null primary key autoincrement,' \
           'cds real,' \
           'temp real,' \
-          'humt real,' \
+          'humi real,' \
           'ts timestamp default current_timestamp ' \
           ')'
     cursor = conn.cursor()
