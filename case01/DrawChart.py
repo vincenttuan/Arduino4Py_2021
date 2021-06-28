@@ -15,7 +15,7 @@ plt.plot(df['ts'], df['humi'], label="humi")  # 繪製折線圖
 plt.grid(True)
 # 圖例
 plt.xlabel('time')
-plt.ylabel('value')
+plt.ylabel('value(%)')
 plt.xticks(rotation=90)
 plt.legend()
 plt.show()
