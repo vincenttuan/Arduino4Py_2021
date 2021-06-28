@@ -9,6 +9,7 @@ import serial
 import threading
 import case01.OpenWeather as ow
 import sqlite3
+import time
 from tkinter import font
 from io import BytesIO
 from PIL import Image, ImageTk
@@ -17,7 +18,7 @@ COM_PORT = '/dev/cu.wchusbserial1460'  # 指定通訊埠名稱
 BAUD_RATES = 9600  # 設定傳輸速率(鮑率)
 play = True
 data = ""
-conn = sqlite3.connect('iot.db')
+conn = sqlite3.connect('iot.db', check_same_thread=False)
 
 def createTable():
     sql = 'create table if not exists Env(' \
@@ -30,6 +31,23 @@ def createTable():
     cursor = conn.cursor()
     cursor.execute(sql)
     conn.commit()
+
+def insertRecord():
+    sql = "Insert into Env(cds, temp, humi) values(%d, %.1f, %.1f)" % \
+          (int(cdsValue.get().split(" ")[0]),
+           float(tempValue.get().split(" ")[0]),
+           float(humiValue.get().split(" ")[0]))
+    cursor = conn.cursor()
+    cursor.execute(sql)
+    print('last insert record id :', cursor.lastrowid)
+    conn.commit()
+    pass
+
+def execInsertRecord():
+    while play:
+        time.sleep(10)
+        insertRecord()
+
 
 def receiveData():
 
@@ -113,7 +131,7 @@ def getOpenWeatherData():
 
 if __name__ == '__main__':
 
-    #createTable()
+    createTable()
 
     try:
         ser = serial.Serial(COM_PORT, BAUD_RATES)
@@ -204,6 +222,9 @@ if __name__ == '__main__':
 
     t2 = threading.Thread(target=getOpenWeatherData)
     t2.start()
+
+    t3 = threading.Thread(target=execInsertRecord)
+    t3.start()
 
     root.mainloop()
 
