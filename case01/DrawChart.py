@@ -13,6 +13,7 @@ print(df)
 plt.plot(df['ts'], df['temp'], label="temp")  # 繪製折線圖
 plt.plot(df['ts'], df['humi'], label="humi")  # 繪製折線圖
 plt.grid(True)
+
 # 圖例
 plt.xlabel('time')
 plt.ylabel('value(%)')

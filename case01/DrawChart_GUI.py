@@ -35,7 +35,6 @@ def show():
     #plt.show()
 
     canvs.get_tk_widget().pack(side=tkinter.TOP, fill=tkinter.BOTH, expand=1)
+    root.after(2000)
     root.mainloop()
 
-if __name__ == '__main__':
-    show()
