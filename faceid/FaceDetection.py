@@ -21,11 +21,15 @@ while True:
 
     # 畫出每一個臉的範圍
     faces = face_cascade.detectMultiScale(
-        gray,
-        scaleFactor=1.1,
-        minNeighbors=5,
-        minSize=(30, 30),
+        gray,             # 待檢測圖片，一般來說設定成灰度圖像可以加快檢測速度
+        scaleFactor=1.1,  # 檢測粒度。若粒度增加會加速檢測速度，但會影響準確率
+        minNeighbors=5,   # 每個目標至少要檢測到幾次以上，才被認定是真數據
+        minSize=(30, 30), # 數據搜尋的最小尺寸
         flags=cv2.CASCADE_SCALE_IMAGE
+        # CASCADE_DO_CANNY_PRUNING=1 -> 利用canny邊緣檢測來排除一些邊緣很少或者很多的影象區域
+        # CASCADE_SCALE_IMAGE=2 -> 正常比例檢測
+        # CASCADE_FIND_BIGGEST_OBJECT=4 -> 只檢測最大的物體
+        # CASCADE_DO_ROUGH_SEARCH=8 粗略的檢測
     )
 
     # 在臉部周圍畫矩形框
