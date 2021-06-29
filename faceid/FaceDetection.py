@@ -16,6 +16,8 @@ while True:
     ret, frame = cap.read()
     print(ret, frame)
 
+    frame = cv2.flip(frame, 1) # 鏡像處理
+
     # 圖像灰階化
     gray = cv2.cvtColor(frame, cv2.COLOR_BGR2GRAY)
 
@@ -33,7 +35,7 @@ while True:
     )
 
     # 在臉部周圍畫矩形框
-    for (x, y, w , h) in faces:
+    for (x, y, w, h) in faces:
         cv2.rectangle(frame, (x, y), (x+w, y+h), (0, 0, 255), 5)
 
     # 顯示在 frame UI 上面
