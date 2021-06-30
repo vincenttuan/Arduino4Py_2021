@@ -37,7 +37,7 @@ POSITIVE_LABEL = 1
 NEGATIVE_LABEL = 2
 
 # 人臉辨識訓練集
-HAAR_FACES = './haarcascades/haarcascade_frontalface_alt.haarcascades'
+HAAR_FACES = './haarcascades/haarcascade_frontalface_alt.xml'
 
 # 取樣縮放比例
 HAAR_SCALE_FACTOR = 1.3

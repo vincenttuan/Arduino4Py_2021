@@ -1,0 +1,12 @@
+一.設定要訓練的人名
+Config.py
+第四行: MY_NAME = '你的名字'
+
+二.拍照（獲取人臉素材(樣本)，至少 100 張）
+執行：Face_capture_positives.py
+
+三.樣本訓練（機器學習）
+執行：Face_training.py
+
+四.進行辨識實測
+執行：Face_recognition.py
