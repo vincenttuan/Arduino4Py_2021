@@ -1,7 +1,7 @@
 import cv2
 
-face_cascade = cv2.CascadeClassifier('./haarcascades/haarcascade_frontalface_alt.xml')
-smile_cascade = cv2.CascadeClassifier('./haarcascades/haarcascade_smile.xml')
+face_cascade = cv2.CascadeClassifier('./haarcascades/haarcascade_frontalface_alt.haarcascades')
+smile_cascade = cv2.CascadeClassifier('./haarcascades/haarcascade_smile.haarcascades')
 
 # 設定 img 位置
 #img = cv2.imread('./image/test.jpg')
