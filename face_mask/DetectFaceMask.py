@@ -3,11 +3,7 @@ import cv2
 # multiple cascades: https://github.com/Itseez/opencv/tree/master/data/haarcascades
 
 face_cascade = cv2.CascadeClassifier('./haarcascades/haarcascade_frontalface_default.xml')
-eye_cascade = cv2.CascadeClassifier('./haarcascades/haarcascade_eye.xml')
 mouth_cascade = cv2.CascadeClassifier('./haarcascades/haarcascade_mcs_mouth.xml')
-upper_body = cv2.CascadeClassifier('./haarcascades/haarcascade_upperbody.xml')
-
-
 
 # Adjust threshold value in range 80 to 105 based on your light.
 bw_threshold = 80
@@ -76,9 +72,8 @@ while 1:
 
     # Show frame with results
     cv2.imshow('Mask Detection', img)
-    k = cv2.waitKey(30) & 0xff
-    if k == 27:
-        break
+    if cv2.waitKey(1) & 0xFF == ord('q'):
+        break;
 
 # Release video
 cap.release()
