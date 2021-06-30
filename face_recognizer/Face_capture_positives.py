@@ -40,13 +40,6 @@ if __name__ == '__main__':
         # 捕捉 frame-by-frame (讀取相片)
         ret, image = camera.read()  # ret : 讀到的 frame 是正確的話會回傳 true
 
-        # 將 frame 顯示於視窗中 (這樣才可以看到自己的臉)
-        cv2.imshow('Video', image)
-
-        # 按下 q 離開迴圈 (「1」表示停 1ms 來偵測是否使用者有按下q。若設定為「0」就表示持續等待至使用者按下按鍵為止)
-        if cv2.waitKey(1) & 0xFF == ord('q'):
-            break
-
         # 利用 OpenCV 轉為灰階相片
         gray = cv2.cvtColor(image, cv2.COLOR_RGB2GRAY)
 
@@ -62,6 +55,13 @@ if __name__ == '__main__':
 
         # 取得欲裁切的資料
         x, y, w, h = result
+
+        # 繪製人臉框與名字
+        cv2.putText(image, Config.MY_NAME, (x, y - 10), cv2.FONT_HERSHEY_COMPLEX, 1.2, (0, 255, 0), 2)
+        cv2.rectangle(image, (x, y), (x + w, y + h), (0, 0, 255), 5)
+
+        # 將 frame 顯示於視窗中 (這樣才可以看到自己的臉)
+        cv2.imshow('Video', image)
 
         # 進行裁切
         crop = Config.crop(gray, x, y, w, h)
@@ -82,6 +82,10 @@ if __name__ == '__main__':
         if count > Config.SAMPLE_AMOUNT:
             print("Finish")
             break;
+
+        # 按下 q 離開迴圈 (「1」表示停 1ms 來偵測是否使用者有按下q。若設定為「0」就表示持續等待至使用者按下按鍵為止)
+        if cv2.waitKey(1) & 0xFF == ord('q'):
+            break
 
     # 釋放資源
     camera.release()
