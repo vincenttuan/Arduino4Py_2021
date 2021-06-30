@@ -6,6 +6,9 @@ MY_NAME = 'vincent'
 # 樣本素材張數
 SAMPLE_AMOUNT = 200
 
+# ./training 資料夾
+TRAINING_FOLDER = './training'
+
 # 定義均值圖檔檔名
 MEAN_FILE = './training/mean.png'
 
