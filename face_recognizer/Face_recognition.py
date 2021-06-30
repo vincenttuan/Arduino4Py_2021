@@ -99,7 +99,7 @@ if __name__ == '__main__':
             print('辨識失敗 face_recognizer!')
             # 在臉部周圍畫矩形框
             for (x, y, w, h) in faces:
-                cv2.rectangle(frame, (x, y), (x + w, y + h), (0, 255, 0), 5)  # 注意：(0, 255, 0) 是 BGR
+                cv2.rectangle(frame, (x, y), (x + w, y + h), (0, 0, 255), 5)  # 注意：(0, 255, 0) 是 BGR
 
         # 結束辨識程序...end
 
