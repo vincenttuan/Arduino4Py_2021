@@ -9,21 +9,24 @@ import shutil
 
 def menu():
     while True:
-        print('-------------')
-        print('1. 拍照片-製作素材')
-        print('2. 訓練-機器學習')
-        print('3. 辨識-人臉辨識')
+        print('------------------------------')
+        print('1. 拍照片-製作素材 + 訓練-機器學習')
+        print('2. 辨識-人臉辨識')
         print('9. 離開-Exit')
-        print('-------------')
+        print('------------------------------')
         n = int(input('請選擇:'))
 
         if n == 1:
             shutil.rmtree(Config.TRAINING_FOLDER)
+            my_name = input('請輸入你的英文名: ')
+            Config.MY_NAME = my_name
             cap.capture()
             cv2.waitKey(1)
-        elif n == 2:
+            # 訓練
             train.train()
-        elif n == 3:
+        elif n == 2:
+            my_name = input('請輸入你的英文名: ')
+            Config.MY_NAME = my_name
             score = recogn.recognizer()
             print("score:", score)
             cv2.waitKey(1)
