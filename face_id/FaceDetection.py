@@ -34,7 +34,7 @@ while True:
         # CASCADE_DO_ROUGH_SEARCH=8 粗略的檢測
     )
 
-    # 在臉部周圍畫矩形框
+    # 在臉部周圍畫矩形框訓練集資料已儲存
     for (x, y, w, h) in faces:
         # 繪文字 putText(來源, 文字, 左下座標, 字型, 字型大小, 文字顏色, 文字線條寬度)
         cv2.putText(frame, 'Vincent', (x, y-10), cv2.FONT_HERSHEY_COMPLEX, 1.2, (0, 255, 0), 2)
