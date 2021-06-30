@@ -5,9 +5,10 @@ from face_recognizer_lab1 import Config
 # 載入 Config.HAAR_FACES 指定的層疊分類器
 haar_faces = cv2.CascadeClassifier(Config.HAAR_FACES)
 
+label = None
+
 # 辨識
 def recognizer():
-
     # 取得攝像鏡頭位置
     cap = cv2.VideoCapture(0)
 
@@ -60,6 +61,7 @@ def recognizer():
         crop = Config.resize(Config.crop(gray, x, y, w, h))
 
         # 5.進行比對檢驗評估
+        global label
         label = model.predict(crop)
 
         # 6.列印評估資訊
@@ -108,8 +110,11 @@ def recognizer():
         # 將 frame 顯示
         cv2.imshow('Recognition', frame)
 
+
     # 釋放資源
     cap.release()
 
     # 關閉所有視窗
     cv2.destroyAllWindows()
+
+    return label[1]

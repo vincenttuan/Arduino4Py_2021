@@ -24,11 +24,14 @@ def menu():
         elif n == 2:
             train.train()
         elif n == 3:
-            recogn.recognizer()
+            score = recogn.recognizer()
+            print("score:", score)
             cv2.waitKey(1)
         elif n == 9:
             print("Exit")
             break
+
+
 
 if '__main__' == __name__:
     menu()
