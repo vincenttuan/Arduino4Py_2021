@@ -78,6 +78,11 @@ if __name__ == '__main__':
         # 編號加 1
         count += 1
 
+        # count > SAMPLE_AMOUNT 離開
+        if count > Config.SAMPLE_AMOUNT:
+            print("Finish")
+            break;
+
     # 釋放資源
     camera.release()
 
