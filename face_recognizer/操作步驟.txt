@@ -5,6 +5,9 @@ Config.py
 二.拍照（獲取人臉素材(樣本)，至少 200 張）
 執行：Face_capture_positives.py
 
+PGM viewer for browser
+https://smallpond.ca/jim/photomicrography/pgmViewer/index.html
+
 三.樣本訓練（機器學習）
 執行：Face_training.py
 
