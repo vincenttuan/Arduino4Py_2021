@@ -43,10 +43,10 @@ NEGATIVE_LABEL = 2
 HAAR_FACES = './haarcascades/haarcascade_frontalface_alt.xml'
 
 # 取樣縮放比例
-HAAR_SCALE_FACTOR = 1.3
+HAAR_SCALE_FACTOR = 1.1
 
 # 取樣最小寬放數
-HAAR_MIN_NEIGHBORS = 4
+HAAR_MIN_NEIGHBORS = 10
 
 # 取樣最小樣本尺寸
 HAAR_MIN_SIZE = (30, 30)
