@@ -1,3 +1,11 @@
+反安裝(若之前有其他本):
+pip uninstall opencv-contrib-python
+pip uninstall opencv-python
+
+安裝:
+pip install opencv-python
+pip install opencv-contrib-python
+
 一.設定要訓練的人名
 Config.py
 第四行: MY_NAME = '你的名字'
