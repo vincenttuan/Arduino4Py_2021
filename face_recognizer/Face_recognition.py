@@ -79,6 +79,8 @@ if __name__ == '__main__':
             # CASCADE_DO_ROUGH_SEARCH=8 粗略的檢測
         )
 
+        # 印出 label[1] 辨識分數
+        cv2.putText(frame, str(int(label[1])), (10, 30), 2, 1.2, (255, 0, 0), 2)
 
         # 7.判斷評估值 <= Config.POSITIVE_THRESHOLD
         if label[1] <= Config.POSITIVE_THRESHOLD:
