@@ -18,7 +18,13 @@ firebase_admin.initialize_app(cred, {
 
 def listenerDoor(event):
     print(event.data)
-    doorValue.set(event.data)
+    # 換圖片
+    if event.data == 1:
+        doorLabel.config(image=door_open_photo)
+        doorLabel.image = door_open_photo
+    elif event.data == 0:
+        doorLabel.config(image=door_close_photo)
+        doorLabel.image = door_close_photo
 
 def listenerDHT11Temp(event):
     print(event.data)
@@ -48,12 +54,9 @@ tempValue.set("00.0 C")
 humiValue = tkinter.StringVar()
 humiValue.set("00.0 %")
 
-doorValue = tkinter.StringVar()
-doorValue.set("0")
-
 tempLabel = tkinter.Label(root, textvariable=tempValue, font=myfont)
 humiLabel = tkinter.Label(root, textvariable=humiValue, font=myfont)
-doorLabel = tkinter.Label(root, textvariable=doorValue, font=myfont)
+doorLabel = tkinter.Label(root, image=door_close_photo, font=myfont)
 
 root.rowconfigure(0, weight=1)
 root.columnconfigure((0, 1, 2), weight=1)
