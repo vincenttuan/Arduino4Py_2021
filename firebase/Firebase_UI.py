@@ -90,7 +90,7 @@ humiLabel.grid(row=0, column=1, sticky='EWNS')
 doorLabel.grid(row=0, column=2, sticky='EWNS')
 updateTempButton.grid(row=1, column=0, sticky='EWNS')
 updateHumiButton.grid(row=1, column=1, sticky='EWNS')
-updateDoorButton.grid(row=1, column=1, sticky='EWNS')
+updateDoorButton.grid(row=1, column=2, sticky='EWNS')
 
 t1 = threading.Thread(target=listenerFirebase)
 t1.start()
