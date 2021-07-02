@@ -5,6 +5,8 @@
 +-----------------+
 '''
 import tkinter
+from datetime import datetime
+
 import serial
 import threading
 import case01.OpenWeather as ow
@@ -73,7 +75,9 @@ def receiveData():
             print(data)
             #------------------------------------------------
             # firebase set log
-            db.reference('/log').set(data)
+            db.reference('/log/data').set(data)
+            db.reference('/log/time/str').set(time.ctime())
+            db.reference('/log/time/long').set(time.time())
             # firebase set 結構資料配置
 
 
