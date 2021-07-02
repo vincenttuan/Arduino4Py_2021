@@ -56,7 +56,9 @@ def update_humi():
 
 def update_door():
     # 若現在是開門 1 狀態，就送出關門 0, 反之亦然
-    pass
+    door = db.reference('/door').get()
+    door = 1 if door == 0 else 0
+    db.reference('/door').set(door)
 
 root = tkinter.Tk()
 root.geometry("500x150")
