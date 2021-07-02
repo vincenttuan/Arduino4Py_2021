@@ -71,8 +71,13 @@ def receiveData():
             data = data.strip("\r")
             # console print log
             print(data)
+            #------------------------------------------------
             # firebase set log
             db.reference('/log').set(data)
+            # firebase set 結構資料配置
+
+
+            # ------------------------------------------------
             # ui show log
             respText.set(data)
             try :
