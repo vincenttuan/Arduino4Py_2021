@@ -14,6 +14,14 @@ from tkinter import font
 from io import BytesIO
 from PIL import Image, ImageTk
 import face_recognizer_lab1.Face_recognition as recogn
+import firebase_admin
+from firebase_admin import credentials
+from firebase_admin import db
+
+cred = credentials.Certificate('../firebase/key.json')
+firebase_admin.initialize_app(cred, {
+    'databaseURL': 'https://arduino-iot-202107-default-rtdb.firebaseio.com/'
+})
 
 COM_PORT = '/dev/cu.wchusbserial1460'  # 指定通訊埠名稱
 BAUD_RATES = 9600  # 設定傳輸速率(鮑率)
@@ -58,8 +66,14 @@ def receiveData():
             data_row = ser.readline()  # 讀取一行(含換行符號\r\n)原始資料
             global data
             data = data_row.decode()  # 預設是用 UTF-8 解碼
-            data = data.strip("\r").strip("\n")  # 除去換行符號
+            #data = data.strip("\r").strip("\n")  # 除去換行符號
+            data = data.strip("\n")
+            data = data.strip("\r")
+            # console print log
             print(data)
+            # firebase set log
+            db.reference('/log').set(data)
+            # ui show log
             respText.set(data)
             try :
                 values = data.split(",")
