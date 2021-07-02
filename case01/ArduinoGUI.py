@@ -31,6 +31,11 @@ play = True
 data = ""
 conn = sqlite3.connect('iot.db', check_same_thread=False)
 
+buzeer_on = 16
+buzeer_off = 32
+door_open = 105
+door_close = 20
+
 def createTable():
     sql = 'create table if not exists Env(' \
           'id integer not null primary key autoincrement,' \
@@ -59,6 +64,30 @@ def execInsertRecord():
         time.sleep(10)
         insertRecord()
 
+def postToFirebase(data):
+    #------------------------------------------------
+    #firebase set log
+    db.reference('/log/data').set(data)
+    db.reference('/log/time/str').set(time.ctime())
+    db.reference('/log/time/long').set(time.time())
+    # ------------------------------------------------
+    # firebase set 結構資料配置
+    # 752,24.80,42.00,0,20
+    logArray = data.split(",")
+    db.reference('/cds').set(int(logArray[0]))
+    db.reference('/dht11/temp').set(float(logArray[1]))
+    db.reference('/dht11/humi').set(float(logArray[2]))
+    db.reference('/led').set(int(logArray[3]))
+
+    if int(logArray[3]) == buzeer_off:
+       db.reference('/buzeer').set(0)
+    elif int(logArray[3]) == buzeer_on:
+       db.reference('/buzeer').set(1)
+
+    if int(logArray[4]) == door_close:
+       db.reference('/door').set(0)
+    elif int(logArray[4]) == door_open:
+       db.reference('/door').set(1)
 
 def receiveData():
 
@@ -73,13 +102,10 @@ def receiveData():
             data = data.strip("\r")
             # console print log
             print(data)
-            #------------------------------------------------
-            # firebase set log
-            db.reference('/log/data').set(data)
-            db.reference('/log/time/str').set(time.ctime())
-            db.reference('/log/time/long').set(time.time())
-            # firebase set 結構資料配置
 
+            # ------------------------------------------------
+            # 建立一條執行緒去維護 firebase 資料
+            threading.Thread(target=lambda: postToFirebase(data)).start()
 
             # ------------------------------------------------
             # ui show log
@@ -89,16 +115,16 @@ def receiveData():
                 cdsValue.set("%d lu" % (float(values[0])))
                 tempValue.set("%.1f C" % (float(values[1])))
                 humiValue.set("%.1f %%" % (float(values[2])))
-                if(int(values[3]) == 16):
+                if(int(values[3]) == buzeer_on):
                     sendButton0.config(image=buzeer_open_photo)
                     sendButton0.image = buzeer_open_photo
-                elif (int(values[3]) == 32):
+                elif (int(values[3]) == buzeer_off):
                     sendButton0.config(image=buzeer_close_photo)
                     sendButton0.image = buzeer_close_photo
-                if (int(values[4]) == 20):
+                if (int(values[4]) == door_close):
                     sendButton4.config(image=door_close_photo)
                     sendButton4.image = door_close_photo
-                elif (int(values[4]) == 105):
+                elif (int(values[4]) == door_open):
                     sendButton4.config(image=door_open_photo)
                     sendButton4.image = door_open_photo
             except:
