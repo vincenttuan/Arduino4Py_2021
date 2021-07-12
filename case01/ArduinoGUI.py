@@ -162,6 +162,16 @@ def cv():
     if score <= 2000:
         sendData('8')
 
+def faceListsner(event):
+    if (event.data == 1):
+        db.reference("/face").set(0)
+        cv()
+
+def execFaceListsner():
+    # 監聽 firebase face 資料
+    db.reference("/face").listen(faceListsner)
+
+
 def getOpenWeatherData():
     status_code, main, icon, temp, feels_like, humidity = ow.openweather()
     if(status_code == 200):
@@ -184,6 +194,7 @@ def getOpenWeatherData():
         sendData("A%.2f,%.2f" % ((float(temp)-273.15), float(humidity)))
     else:
         owmainValue.set('錯誤碼：' + str(status_code))
+
 
 if __name__ == '__main__':
 
@@ -286,6 +297,10 @@ if __name__ == '__main__':
 
     t3 = threading.Thread(target=execInsertRecord)
     t3.start()
+
+
+    t4 = threading.Thread(target=execFaceListsner)
+    t4.start()
 
     root.mainloop()
 

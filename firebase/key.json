@@ -1,0 +1,12 @@
+{
+  "type": "service_account",
+  "project_id": "arduino-iot-202107",
+  "private_key_id": "9c7367bdb6de62444304873c746df3eebebc2643",
+  "private_key": "-----BEGIN PRIVATE KEY-----\nMIIEvwIBADANBgkqhkiG9w0BAQEFAASCBKkwggSlAgEAAoIBAQCPJm7fZVHIKQbO\nHD2nbEkt/gwWlB51uypDpRtJIiMg3tV2galUyI5/+djchDNYJKHWhJSVnO37JXXa\nBXGGUWoEE1gOlekPGBuCstgtRty4k9vmCXwyF1EKOCwiGJbHcI9BYIfJMrsfYcs8\nx+N3dsoi2SPPHej3elNAM/tovtbo1OEuyUzdiGHjOVaZExQFIfZRKDqzFs4DX1AL\nWq1xIh7b+qvgYqGS2b4kfUPZq301cm4xrPK3bN9zMvyTSiZAoXK1CaADcMfERE7i\nBGpVdhBilAaRn0dCAJfG2EKpWAILfz4IK9d9zBqHH5WL6N0iQSdZqi0uEzlqal7z\nBOheJ7aRAgMBAAECggEAJ9a7XoK1Gu6IDU6Avhp910XvmU0JmRxIq+DEUjsk6Z36\nbGuzc3wJZIZlGyHTpEE1pRzquSSeepm3TcDcElSQG6hChnSkEuZTqbEaRqeE//1u\nYnvbS5l/nUd6yNZtB/5EcB5sS8tJlndB951tqa6unLovpBGf51fs2V5eJo2OA+fo\nYEY7mNkMw+YIX8B41aBBLtFpf7eWrBP/eaLynyHtH7M7agHb5vPM7o+xmeChAbnr\nCR4M7YSFPfLM3g5cOR1CE7aAEYNt1cMIOOh0o7tzIW9e+bIOb3G31OxKJbxa38B8\nLBHJY4OFVZ1qXNuQBIuFQJm/v2+2vCd8a23mctQv3QKBgQDBfh8qS8ErTSsPvBJP\nvE92BgefAN4sgNLbxosMnR4W5Zfwf1n6VKovwmJJvExA1I/H/WAbwOHZzkhS8oXy\n35Ytxag/GB2htRi/3qSaCuTOIPywVthmFZTzgVVAQztXFqWcIskxwbsrQ77nSKDi\n2ifOAJKy4iQtAZZA/noxv0Qu7wKBgQC9ZPmGDfG/T2bv/5bqAu+9krAXoYgGuinR\nAkLYT5DSOXGqHJAkh5VcITkNtv3CKcuwnk/QjgMBAXuHfquMwLSmvMJMm/Huck6p\nnKoVbeT4eKkrr5xkJiwgJJwpH5pSgD/M7BS98TihUfbkjLfCz3ehdmmf7JTr/Q7k\nIPJiSHJyfwKBgQC32l9CkTi7LFf+W3YKzaOzQYd8ThbNspqoub7l/WTZ3M7Cdj/I\n3SnYt5ss9P5/m3oDTX5E4MG5c4jFSCx+2nSYiXeUfBWr0afyqFs/A5rlQfLYm6yD\nU3504i9fIIMB/ULfWS5TWQG/2l9K5Hf7Fc88rs61qqs1GIzstODm5BalgQKBgQCR\nyfiJyJIewfBrLkPtPvVs6E3E4wLiqsslqKfr+tNv/+gPGo2akQPYN3rDo+kSXTn+\nat7lm2uUip+cXVWQs4ZcE1E9x40kD7mdtor2k/F9kuQmTLgGH5w34faTcVBJ0Y9L\nHy+YRudgxsdWhzutKibck1obUPIR9mpQEUyDe2Ed4QKBgQC31zyQNY8Ir7qPzDyC\nE/bmhrejrSC7DK8oDhRIYQrShR4z8/OhZ1zuE/wWKgkfSpMZTXsuUh2rXByK+TzH\nP8h4k7qoyTeV5WL2ZbgdlNkkaBmSFaGnqjS7JQIVYHfPJRggvtFuTZoQfXaX07M1\nWA7wqYCzZjFPJqh03Uv0VZXeQA==\n-----END PRIVATE KEY-----\n",
+  "client_email": "firebase-adminsdk-pbjbl@arduino-iot-202107.iam.gserviceaccount.com",
+  "client_id": "114954245946284539549",
+  "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+  "token_uri": "https://oauth2.googleapis.com/token",
+  "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
+  "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/firebase-adminsdk-pbjbl%40arduino-iot-202107.iam.gserviceaccount.com"
+}
